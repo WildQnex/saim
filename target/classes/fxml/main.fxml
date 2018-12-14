@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="158.0"
+            prefWidth="440.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2"
+            fx:controller="by.bsuir.saimmod.controller.MainController">
+  <children>
+    <Label layoutX="24.0" layoutY="14.0" text="p:" />
+    <Label layoutX="124.0" layoutY="14.0" text="π1:" />
+    <Label layoutX="224.0" layoutY="14.0" text="π2:" />
+    <Label layoutX="324.0" layoutY="14.0" text="π3:" />
+    <TextField text="0.3" fx:id="pField" layoutX="24.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="0.7" fx:id="p1Field" layoutX="124.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="0.7" fx:id="p2Field" layoutX="224.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="0.5" fx:id="p3Field" layoutX="324.0" layoutY="30.0" prefWidth="95.0" />
+    <Label layoutX="24.0" layoutY="64.0" text="Tact Amount:" />
+    <Label layoutX="124.0" layoutY="64.0" text="A:" />
+    <Label layoutX="224.0" layoutY="64.0" text="Wc:" />
+    <Label layoutX="324.0" layoutY="64.0" text="Pотк:" />
+    <TextField text="10000" fx:id="tactField" layoutX="24.0" layoutY="80.0" prefWidth="95.0" />
+    <TextField fx:id="aField" layoutX="124.0" layoutY="80.0" prefWidth="95.0" />
+    <TextField fx:id="wCField" layoutX="224.0" layoutY="80.0" prefWidth="95.0" />
+    <TextField fx:id="pOtkField" layoutX="324.0" layoutY="80.0" prefWidth="95.0" />
+    <Button onAction="#handleSubmitButtonAction" layoutX="188.0" layoutY="124.0" mnemonicParsing="false" text="Perform" />
+  </children>
+</AnchorPane>
