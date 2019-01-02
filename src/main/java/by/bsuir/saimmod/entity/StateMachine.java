@@ -39,10 +39,12 @@ public class StateMachine
         //pi 3
         if (currentState.get(3) != null)
         {
+            currentState.get(3).incTact();
             messageAmount++;
             if (isPi3())
             {
                 currentState.get(3).markProcessed();
+
                 currentState.put(3, null);
             }
         }
@@ -50,11 +52,13 @@ public class StateMachine
         //pi 1
         if (currentState.get(1) != null)
         {
+            currentState.get(1).incTact();
             messageAmount++;
             if (isPi1())
             {
                 if (currentState.get(3) == null)
                 {
+
                     currentState.put(3, currentState.get(1));
                     currentState.put(1, null);
                 }
@@ -68,6 +72,7 @@ public class StateMachine
         //pi 2
         if (currentState.get(2) != null)
         {
+            currentState.get(2).incTact();
             messageAmount++;
             if (isPi2())
             {
@@ -89,7 +94,7 @@ public class StateMachine
         {
             message = new Message();
             messages.add(message);
-
+            //message.incTact();
             if (currentState.get(1) == null)
             {
                 currentState.put(1, message);
@@ -99,6 +104,8 @@ public class StateMachine
                 currentState.put(2, message);
             }
         }
+
+        //currentState.entrySet().stream().filter((e) -> e.getValue() != null).forEach(msg -> msg.getValue().incTact());
     }
 
     private boolean isP()

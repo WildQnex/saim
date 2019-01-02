@@ -53,9 +53,9 @@ public class MainController
         }
         double A = ((double)stateMachine.getMessages().stream().filter(Message::isProcessed).count())/tact;
         aField.setText(Double.toString(A));
-        double Wc = ((double)stateMachine.getMessageAmount()/tact)/A;
+        double Wc = ((double)stateMachine.getMessages().stream().filter(Message::isProcessed).map(Message::getTactsAmount).reduce((a, b) -> a+b).get())/stateMachine.getMessages().stream().filter(Message::isProcessed).count();
         wCField.setText(Double.toString(Wc));
-        double pOtk = ((double)stateMachine.getMessages().stream().filter(Message::isProcessed).count())/stateMachine.getMessages().size();
-        pOtkField.setText(Double.toString(1 - pOtk));
+        float pOtk = ((float)stateMachine.getMessages().stream().filter(Message::isProcessed).count())/stateMachine.getMessages().size();
+        pOtkField.setText((1F - pOtk) + "");
     }
 }
