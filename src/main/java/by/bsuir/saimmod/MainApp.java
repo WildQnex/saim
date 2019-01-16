@@ -17,7 +17,7 @@ public class MainApp extends Application {
         String fxmlFile = "/fxml/main.fxml";
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
-        stage.setTitle("Saimmod lab 3-4. Martinyuk");
+        stage.setTitle("Saimmod lab 5-6. Martinyuk");
         stage.setScene(new Scene(root));
         stage.show();
     }

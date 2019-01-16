@@ -5,28 +5,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.LineChart?>
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" prefHeight="158.0"
-            prefWidth="440.0" xmlns:fx="http://javafx.com/fxml/1"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0"
+            prefWidth="840.0" xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/2.2"
             fx:controller="by.bsuir.saimmod.controller.MainController">
   <children>
-    <Label layoutX="24.0" layoutY="14.0" text="p:" />
-    <Label layoutX="124.0" layoutY="14.0" text="π1:" />
-    <Label layoutX="224.0" layoutY="14.0" text="π2:" />
-    <Label layoutX="324.0" layoutY="14.0" text="π3:" />
-    <TextField text="0.3" fx:id="pField" layoutX="24.0" layoutY="30.0" prefWidth="95.0" />
-    <TextField text="0.7" fx:id="p1Field" layoutX="124.0" layoutY="30.0" prefWidth="95.0" />
-    <TextField text="0.7" fx:id="p2Field" layoutX="224.0" layoutY="30.0" prefWidth="95.0" />
-    <TextField text="0.5" fx:id="p3Field" layoutX="324.0" layoutY="30.0" prefWidth="95.0" />
-    <Label layoutX="24.0" layoutY="64.0" text="Tact Amount:" />
-    <Label layoutX="124.0" layoutY="64.0" text="A:" />
-    <Label layoutX="224.0" layoutY="64.0" text="Wc:" />
-    <Label layoutX="324.0" layoutY="64.0" text="Pотк:" />
-    <TextField text="10000" fx:id="tactField" layoutX="24.0" layoutY="80.0" prefWidth="95.0" />
-    <TextField fx:id="aField" layoutX="124.0" layoutY="80.0" prefWidth="95.0" />
-    <TextField fx:id="wCField" layoutX="224.0" layoutY="80.0" prefWidth="95.0" />
-    <TextField fx:id="pOtkField" layoutX="324.0" layoutY="80.0" prefWidth="95.0" />
-    <Button onAction="#handleSubmitButtonAction" layoutX="188.0" layoutY="124.0" mnemonicParsing="false" text="Perform" />
+    <Label layoutX="24.0" layoutY="14.0" text="Messages amount:" />
+    <Label layoutX="124.0" layoutY="14.0" text="μ1:" />
+    <Label layoutX="224.0" layoutY="14.0" text="μ2:" />
+    <Label layoutX="324.0" layoutY="14.0" text="n1:" />
+    <Label layoutX="424.0" layoutY="14.0" text="n2:" />
+    <TextField text="10000" fx:id="tactField" layoutX="24.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="5" fx:id="p1Field" layoutX="124.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="5" fx:id="p2Field" layoutX="224.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="2" fx:id="n1Field" layoutX="324.0" layoutY="30.0" prefWidth="95.0" />
+    <TextField text="2" fx:id="n2Field" layoutX="424.0" layoutY="30.0" prefWidth="95.0" />
+    <LineChart fx:id="pOtkChart" layoutY="59.0" prefHeight="480.0" prefWidth="840.0">
+      <xAxis>
+        <NumberAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT" />
+      </yAxis>
+    </LineChart>
+    <Button onAction="#handleSubmitButtonAction" layoutX="524.0" layoutY="30.0" mnemonicParsing="false" text="Perform" />
+    <Button onAction="#handleClearButtonAction" layoutX="624.0" layoutY="30.0" mnemonicParsing="false" text="Clear" />
   </children>
 </AnchorPane>

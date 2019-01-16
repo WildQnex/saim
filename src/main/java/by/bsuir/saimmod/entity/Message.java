@@ -2,26 +2,32 @@ package by.bsuir.saimmod.entity;
 
 public class Message
 {
-    private int tactsAmount;
-    private boolean isProcessed;
+    public int timeAmount;
+    private boolean isKickedOnFirst;
+    private boolean isKickedOnSecond;
 
-    public void incTact()
+    public boolean isKickedOnFirst()
     {
-        tactsAmount++;
+        return isKickedOnFirst;
     }
 
-    public int getTactsAmount()
+    public boolean isKickedOnSecond()
     {
-        return tactsAmount;
+        return isKickedOnSecond;
     }
 
-    public void markProcessed()
+    public void kickOnFirst()
     {
-        isProcessed = true;
+            isKickedOnFirst = true;
     }
 
-    public boolean isProcessed()
+    public void kickOnSecond()
     {
-        return isProcessed;
+            isKickedOnSecond = true;
+    }
+
+    public boolean isKicked()
+    {
+        return isKickedOnFirst || isKickedOnSecond;
     }
 }

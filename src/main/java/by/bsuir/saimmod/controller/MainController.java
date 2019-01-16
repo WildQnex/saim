@@ -1,61 +1,67 @@
 package by.bsuir.saimmod.controller;
 
-import java.util.Random;
-
-import by.bsuir.saimmod.entity.Message;
 import by.bsuir.saimmod.entity.StateMachine;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 
 public class MainController
 {
-    Random random = new Random();
-    @FXML
-    TextField pField;
     @FXML
     TextField p1Field;
     @FXML
     TextField p2Field;
     @FXML
-    TextField p3Field;
+    TextField n1Field;
     @FXML
     TextField tactField;
     @FXML
-    TextField aField;
+    TextField n2Field;
     @FXML
-    TextField wCField;
-    @FXML
-    TextField pOtkField;
+    LineChart pOtkChart;
 
     @FXML
     protected void handleSubmitButtonAction(ActionEvent event) {
-        double p = 0;
         double pi1 = 0;
         double pi2 = 0;
-        double pi3 = 0;
+        int n1 = 0;
+        int n2 = 0;
         int tact = 0;
         try
         {
-            p = Double.parseDouble(pField.getText());
             pi1 = Double.parseDouble(p1Field.getText());
             pi2 = Double.parseDouble(p2Field.getText());
-            pi3 = Double.parseDouble(p3Field.getText());
+            n1 = Integer.parseInt(n1Field.getText());
+            n2 = Integer.parseInt(n2Field.getText());
             tact = Integer.parseInt(tactField.getText());
         } catch (RuntimeException e)
         {
 
         }
-        StateMachine stateMachine = new StateMachine(p, pi1, pi2, pi3);
-        for (int i = 0; i < tact; i++)
-        {
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Pотк");
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Pотк1");
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("Pотк2");
+        for (int n = 0; n < 11; n++) {
+            StateMachine stateMachine = new StateMachine((1F + n * 0.5), pi1, pi2, tact, n1, n2);
             stateMachine.performTact();
+            series1.getData().add(new XYChart.Data(1 + n * 0.5, stateMachine.getResult().Potk));
+            series2.getData().add(new XYChart.Data(1 + n * 0.5, stateMachine.getResult().Potk1));
+            series3.getData().add(new XYChart.Data(1 + n * 0.5, stateMachine.getResult().Potk2));
         }
-        double A = ((double)stateMachine.getMessages().stream().filter(Message::isProcessed).count())/tact;
-        aField.setText(Double.toString(A));
-        double Wc = ((double)stateMachine.getMessages().stream().filter(Message::isProcessed).map(Message::getTactsAmount).reduce((a, b) -> a+b).get())/stateMachine.getMessages().stream().filter(Message::isProcessed).count();
-        wCField.setText(Double.toString(Wc));
-        float pOtk = ((float)stateMachine.getMessages().stream().filter(Message::isProcessed).count())/stateMachine.getMessages().size();
-        pOtkField.setText((1F - pOtk) + "");
+        pOtkChart.getData().add(series1);
+        pOtkChart.getData().add(series2);
+        pOtkChart.getData().add(series3);
+
+    }
+    @FXML
+    protected void handleClearButtonAction(ActionEvent event) {
+        pOtkChart.getData().setAll(new ArrayList());
     }
 }
